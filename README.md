@@ -9,6 +9,6 @@
        - Implementar un sistema de notificaciones para recordar las tareas al usuario.
    - Puntos esenciales:
        - Diseño de la interfaz de usuario de la aplicación web.
-       - Implementación de la lógica de la aplicación con JavaScript o similar.
-       - Almacenamiento de datos en una base de datos SQLite o similar.
+       - Implementación de la lógica de la aplicación con Java.
+       - Almacenamiento de datos en una base de datos MySQL.
        - Integración de la base de datos con la aplicación web.
