@@ -1,7 +1,7 @@
--- Crea la base de datos dbclientes
-drop database IF EXISTS dbclientes;
-CREATE DATABASE dbclientes;
-USE dbclientes;
+-- Crea la base de datos dbgestor
+drop database IF EXISTS dbgestor;
+CREATE DATABASE dbgestor;
+USE dbgestor;
 
 -- Crea la tabla cliente con varios campos
 CREATE TABLE cliente (
@@ -9,6 +9,7 @@ CREATE TABLE cliente (
   id INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(50) NOT NULL,
   apellido VARCHAR(50) NOT NULL,
+  edad INT (3) NOT NULL,
   telefono VARCHAR(50) NOT NULL,
   correo VARCHAR(50) NOT NULL,
   direccion VARCHAR(50) NOT NULL,
@@ -16,6 +17,14 @@ CREATE TABLE cliente (
   PRIMARY KEY (id) -- Define el ID como clave primaria
 );
 
+CREATE TABLE tareas (
+    --ID único para cada tarea, que se autoincrementa--
+    id INT NOT NULL AUTO_INCREMENT,
+    Tarea_A_Realizar VARCHAR (75) NOT NULL, 
+    tipo VARCHAR (50) NOT NULL,
+    
+
+);
 
 INSERT INTO cliente (nombre, apellido, telefono, correo, direccion) VALUES
 ('Juan', 'Pérez', '555-1234', 'juan.perez@example.com', 'Calle Falsa 123'),
