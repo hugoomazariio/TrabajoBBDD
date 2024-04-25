@@ -20,10 +20,9 @@ CREATE TABLE cliente (
 CREATE TABLE tareas (
     --ID único para cada tarea, que se autoincrementa--
     id INT NOT NULL AUTO_INCREMENT,
-    Tarea_A_Realizar VARCHAR (75) NOT NULL, 
+    tarea VARCHAR (75) NOT NULL, 
     tipo VARCHAR (50) NOT NULL,
-    
-
+    id_cliente INT NOT NULL,
 );
 
 INSERT INTO cliente (nombre, apellido, telefono, correo, direccion) VALUES
@@ -38,11 +37,3 @@ INSERT INTO cliente (nombre, apellido, telefono, correo, direccion) VALUES
 ('Jorge', 'Ramírez', '555-2233', 'jorge.ramirez@example.com', 'Plaza Central 345');
 
 SELECT * FROM cliente;
-/*
-  Este es un comentario de múltiples líneas.
-  Puedes usarlo para explicar secciones más grandes de tu código
-  o para dejar notas más detalladas.
-  Por ejemplo, este script SQL crea una base de datos para clientes
-  y una tabla para almacenar sus datos, incluyendo nombre, apellido,
-  contacto, y fecha de nacimiento.
-*/
