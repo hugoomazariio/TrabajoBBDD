@@ -42,5 +42,13 @@ public class Tareas {
         this.tipo = tipo;
     }
     
+     @Override
+    public String toString() {
+
+        return String.format("%-4d %-20s %-20s %-15s %-25s %-35s",
+                id,
+                tarea,
+                tipo);
+    }
     
 }
