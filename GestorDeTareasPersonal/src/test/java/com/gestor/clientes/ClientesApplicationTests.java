@@ -1,4 +1,4 @@
-package com.ilerna.clientes;
+package com.gestor.clientes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
