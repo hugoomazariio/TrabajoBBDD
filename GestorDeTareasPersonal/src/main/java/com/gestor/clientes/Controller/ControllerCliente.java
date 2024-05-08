@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Controller
-@RequestMapping("/cliente")
+@RequestMapping("/Tarea")
 public class ControllerCliente {
     GestorClientes ge = new GestorClientes ();
     @GetMapping("/")
@@ -30,7 +30,7 @@ public class ControllerCliente {
     @GetMapping("/alta")
     public String greetingForm(Model model) {
         model.addAttribute("cliente", new Cliente());
-        return "./cliente/altacliente";
+        return "./cliente/altaTarea";
     }
     @PostMapping("/alta") //El post hace que los datos no se vean
     public String greetingSubmit(@ModelAttribute Cliente cliente, Model model) {

@@ -37,11 +37,11 @@ public class GestorTareas {
         while (rs.next()) {
             Tareas t = new Tareas(
                     rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getString("apellido"),
-                    rs.getString("telefono"),
-                    rs.getString("correo"),
-                    rs.getString("direccion")
+                    rs.getString("tarea"),
+                    rs.getString("tipo"),
+                    rs.getString("importancia"),
+                    rs.getString("horario"),
+                    rs.getString("duracion")
             );
             lista.add(t);
         }
