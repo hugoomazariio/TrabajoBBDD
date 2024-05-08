@@ -1,7 +1,7 @@
 package com.gestor.tareas.service;
 import com.gestor.clientes.service.*;
 import com.gestor.clientes.database.Conexion;
-import com.gestor.clientes.entity.Cliente;
+import com.gestor.tareas.entity.Tareas;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,29 +13,29 @@ import java.util.List;
 
 public class GestorTareas {
     Conexion c = new Conexion();
-    public void alta(Cliente p) throws SQLException {
+    public void alta(Tareas t) throws SQLException {
         Statement consulta = c.conectar().createStatement();
         // Conversión de Date a String. tratamiento de la fecha para que sea aceptada por MySQL
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //String strFechaFormateada = sdf.format(p.getFechaNacimiento());
         // estring de inserción
-        String cadena = "INSERT INTO cliente(nombre, apellido, telefono, correo, direccion) VALUES ('"
-                + p.getNombre() + "','"
-                + p.getApellido() + "','"
-                + p.getTelefono() + "','"
-                + p.getCorreo() + "','"
-                + p.getDireccion() + "');";
+        String cadena = "INSERT INTO tareas (tarea, tipo,importancia, horario, duracion) VALUES ('"
+                + t.getTarea() + "','"
+                + t.getTipo() + "','"
+                + t.getImportancia()+ "','"
+                + t.getHorario()+ "','"
+                + t.getDuracion()+ "');";
         //System.out.println(cadena);
         consulta.executeUpdate(cadena);
         consulta.close();
     }
-    public List<Cliente> listar() throws SQLException {
+    public List<Tareas> listar() throws SQLException {
         Statement consulta = c.conectar().createStatement();
-        ResultSet rs = consulta.executeQuery("SELECT * FROM cliente");
-        List<Cliente> lista = new ArrayList<>();
+        ResultSet rs = consulta.executeQuery("SELECT * FROM tareas");
+        List<Tareas> lista = new ArrayList<>();
 
         while (rs.next()) {
-            Cliente p = new Cliente(
+            Tareas t = new Tareas(
                     rs.getInt("id"),
                     rs.getString("nombre"),
                     rs.getString("apellido"),
@@ -43,50 +43,50 @@ public class GestorTareas {
                     rs.getString("correo"),
                     rs.getString("direccion")
             );
-            lista.add(p);
+            lista.add(t);
         }
         rs.close();
         consulta.close();
         return lista;
     }
-    public Cliente buscar(int id) throws SQLException {
+    public Tareas buscar(int id) throws SQLException {
         Statement consulta = c.conectar().createStatement();
-        ResultSet rs = consulta.executeQuery("SELECT * FROM cliente WHERE id = " + id);
-        Cliente p = null;
+        ResultSet rs = consulta.executeQuery("SELECT * FROM tareas WHERE id = " + id);
+        Tareas p = null;
         if (rs.next()) {
-            p = new Cliente(
+            p = new Tareas(
                     rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getString("apellido"),
-                    rs.getString("telefono"),
-                    rs.getString("correo"),
-                    rs.getString("direccion")
+                    rs.getString("tarea"),
+                    rs.getString("tipo"),
+                    rs.getString("importancia"),
+                    rs.getString("horario"),
+                    rs.getString("duracion")
             );
         }
         rs.close();
         consulta.close();
         return p;
     }
-    public void modificar(Cliente p) throws SQLException {
+    public void modificar(Tareas t) throws SQLException {
         Statement consulta = c.conectar().createStatement();
         // Conversión de Date a String. tratamiento de la fecha para que sea aceptada por MySQL
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //String strFechaFormateada = sdf.format(p.getFechaNacimiento());
         // String de actualización
         String cadena = "UPDATE cliente SET "
-                + "nombre = '" + p.getNombre() + "', "
-                + "apellido = '" + p.getApellido() + "', "
-                + "telefono = '" + p.getTelefono() + "', "
-                + "correo = '" + p.getCorreo() + "', "
-                + "direccion = '" + p.getDireccion() + "' "
-                + "WHERE id = " + p.getId();
+                + "Tarea = '" + t.getTarea() + "', "
+                + "tipo = '" + t.getTipo()+ "', "
+                + " importancia = '" + t.getImportancia()+ "', "
+                + "horario = '" + t.getHorario()+ "', "
+                + "duracion = '" + t.getDuracion()+ "' "
+                + "WHERE id = " + t.getId();
         // System.out.println(cadena);
         consulta.executeUpdate(cadena);
         consulta.close();
     }
     public void eliminar(int id) throws SQLException {
         Statement consulta = c.conectar().createStatement();
-        consulta.executeUpdate("DELETE FROM cliente WHERE id = " + id);
+        consulta.executeUpdate("DELETE FROM tareas WHERE id = " + id);
         consulta.close();
     }
 
